@@ -84,7 +84,7 @@ transform:translate(-50%,-50%);
 </div>
 
 <div id="crosshair">
-🎯
+🔫
 </div>
 
 <img
@@ -133,6 +133,22 @@ document.getElementById(
 'score'
 ).innerHTML =
 '🏆 Score : '+score;
+
+const boom =
+document.createElement('div');
+
+boom.innerHTML = '💥';
+
+boom.style.position = 'absolute';
+boom.style.left = ball.style.left;
+boom.style.top = ball.style.top;
+boom.style.fontSize = '60px';
+
+document.body.appendChild(boom);
+
+setTimeout(()=>{
+boom.remove();
+},300);
 
 moveBall();
 
