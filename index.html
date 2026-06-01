@@ -77,6 +77,43 @@ button{
     padding:6px 12px;
     font-size:12px;
 }
+
+.logo{
+    animation:
+    pulse 5s infinite,
+    goldGlow 4s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes goldGlow{
+
+    0%{
+        box-shadow:0 0 10px #ffd700;
+    }
+
+    50%{
+        box-shadow:0 0 35px #ffd700;
+    }
+
+    100%{
+        box-shadow:0 0 10px #ffd700;
+    }
+}
+    
 .result{
     margin-top:20px;
     background:#111;
@@ -90,13 +127,13 @@ button{
 <div class="container">
 
 <div style="text-align:center;margin-bottom:10px;">
-    <img
-    src="https://livescore-clickbet88.com/frontend-asset?url=https%3A%2F%2Flivescore-cgg.com%2Fimages%2F0d4df6e9-9af8-44a2-8049-ba7a9b458ebe.webp"
-    width="140"
-    style="
-    border-radius:15px;
-    box-shadow:0 0 20px #00ff88;
-    ">
+<img
+class="logo"
+src="https://livescore-clickbet88.com/frontend-asset?url=https%3A%2F%2Flivescore-cgg.com%2Fimages%2F0d4df6e9-9af8-44a2-8049-ba7a9b458ebe.webp"
+width="140"
+style="
+border-radius:15px;
+">
 </div>
     
 <h1>🏆 PARLAY ELITE 🏆</h1>
