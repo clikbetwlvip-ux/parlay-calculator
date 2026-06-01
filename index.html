@@ -173,41 +173,6 @@ Masukkan data
 <button onclick="copyResult()">
 📋 Copy Result
 </button>
-<hr style="margin:40px 0; border-color:#ffd700;">
-
-<div class="result">
-
-<h2>🎰 WORLD CUP SLOT</h2>
-
-<p id="coins">💰 Coin : 1000</p>
-
-<div id="slotDisplay"
-style="
-font-size:50px;
-text-align:center;
-margin:20px 0;
-">
-⚽ 🏆 🇦🇷
-</div>
-
-<button onclick="spinSlot()">
-🎰 SPIN
-</button>
-
-<button onclick="resetSlot()">
-🔄 RESET GAME
-</button>
-
-<div id="slotResult"
-style="
-margin-top:20px;
-font-size:22px;
-font-weight:bold;
-text-align:center;
-color:#ffd700;
-">
-Tekan SPIN untuk bermain
-</div>
 
 </div>
 
@@ -370,95 +335,7 @@ navigator.clipboard.writeText(text);
 alert("Slip berhasil disalin!");
 }
 
-const symbols = [
-'⚽',
-'🏆',
-'🇧🇷',
-'🇦🇷',
-'🇫🇷'
-];
 
-let coins = 1000;
-
-function spinSlot(){
-
-if(coins < 50){
-
-document.getElementById(
-'slotResult'
-).innerHTML =
-'❌ Coin tidak cukup';
-
-return;
-
-}
-
-coins -= 50;
-
-const a =
-symbols[Math.floor(Math.random()*symbols.length)];
-
-const b =
-symbols[Math.floor(Math.random()*symbols.length)];
-
-const c =
-symbols[Math.floor(Math.random()*symbols.length)];
-
-document.getElementById(
-'slotDisplay'
-).innerHTML =
-`${a} ${b} ${c}`;
-
-let reward = 0;
-let text = '😢 Kalah';
-
-if(a===b && b===c){
-
-reward = 500;
-text = '🔥 JACKPOT +500 Coin';
-
-}else if(a===b || b===c || a===c){
-
-reward = 100;
-text = '🏆 Menang +100 Coin';
-
-}
-
-coins += reward;
-
-document.getElementById(
-'coins'
-).innerHTML =
-`💰 Coin : ${coins}`;
-
-document.getElementById(
-'slotResult'
-).innerHTML =
-text;
-
-}
-
-function resetSlot(){
-
-coins = 1000;
-
-document.getElementById(
-'coins'
-).innerHTML =
-'💰 Coin : 1000';
-
-document.getElementById(
-'slotDisplay'
-).innerHTML =
-'⚽ 🏆 🇦🇷';
-
-document.getElementById(
-'slotResult'
-).innerHTML =
-'Tekan SPIN untuk bermain';
-
-}
-    
 </script>
 
 </body>
