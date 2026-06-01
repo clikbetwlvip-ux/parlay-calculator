@@ -106,6 +106,7 @@ placeholder="500,000"
 oninput="
 this.value=this.value.replace(/[^0-9]/g,'');
 this.value=Number(this.value).toLocaleString('en-US');
+calculate();
 ">
 
 <div id="matches"></div>
@@ -129,14 +130,21 @@ div.className="match";
 
 div.innerHTML=`
 <label>Odds</label>
-<input type="number" step="0.01" class="odd" placeholder="1.90">
+<input
+type="number"
+step="0.01"
+class="odd"
+placeholder="1.90"
+oninput="calculate()">
 
 <label>Status</label>
-<select class="status">
+<select
+class="status"
+onchange="calculate()">
 <option value="win">Win</option>
 <option value="halfwin">Half Win</option>
 <option value="void">Void</option>
-<option value="halflose">Half Lose</option>
+<option value="halflose">Half Lose</option>    
 <option value="lose">Lose</option>
 </select>
 
@@ -147,6 +155,7 @@ document.getElementById("matches").appendChild(div);
 }
 
 addMatch();
+calculate();
 
 function calculate(){
 
