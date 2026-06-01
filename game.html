@@ -6,6 +6,30 @@
 
 <style>
 
+#timer{
+position:fixed;
+top:60px;
+left:20px;
+font-size:24px;
+font-weight:bold;
+}
+
+#lives{
+position:fixed;
+top:100px;
+left:20px;
+font-size:24px;
+font-weight:bold;
+}
+
+#best{
+position:fixed;
+top:140px;
+left:20px;
+font-size:24px;
+font-weight:bold;
+}
+  
 body{
 margin:0;
 overflow:hidden;
@@ -47,6 +71,18 @@ transform:translate(-50%,-50%);
 🏆 Score : 0
 </div>
 
+<div id="timer">
+⏱️ Time : 60
+</div>
+
+<div id="lives">
+❤️❤️❤️
+</div>
+
+<div id="best">
+🥇 Best : 0
+</div>
+
 <div id="crosshair">
 🎯
 </div>
@@ -59,6 +95,15 @@ src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg"
 <script>
 
 let score = 0;
+let lives = 3;
+let timeLeft = 60;
+let bestScore =
+localStorage.getItem('bestScore') || 0;
+
+document.getElementById(
+'best'
+).innerHTML =
+'🥇 Best : ' + bestScore;
 
 const ball =
 document.getElementById('ball');
@@ -77,6 +122,10 @@ ball.style.top = y+'px';
 }
 
 ball.onclick = function(){
+
+if(timeLeft <= 0){
+return;
+}
 
 score++;
 
@@ -108,6 +157,46 @@ e.clientY+'px';
 
 moveBall();
 
+const gameTimer = setInterval(function(){
+
+timeLeft--;
+
+document.getElementById(
+'timer'
+).innerHTML =
+'⏱️ Time : ' + timeLeft;
+
+if(timeLeft <= 0){
+
+clearInterval(gameTimer);
+
+ball.style.display = 'none';
+
+document.getElementById(
+'score'
+).innerHTML =
+'💀 GAME OVER';
+
+if(score > bestScore){
+
+bestScore = score;
+
+localStorage.setItem(
+'bestScore',
+score
+);
+
+document.getElementById(
+'best'
+).innerHTML =
+'🥇 Best : ' + bestScore;
+
+}
+
+}
+
+},1000);
+
 setInterval(
 moveBall,
 1500
@@ -115,5 +204,16 @@ moveBall,
 
 </script>
 
+<button
+onclick="location.reload()"
+style="
+position:fixed;
+top:20px;
+right:20px;
+padding:10px 20px;
+">
+🔄 Restart
+</button>
+  
 </body>
 </html>
