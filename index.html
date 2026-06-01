@@ -50,11 +50,11 @@ input,select{
 }
     
 .match{
-    min-width:300px;
     background:#1c1c1c;
     padding:15px;
-    border-radius:10px;
-    flex-shrink:0;
+    border-radius:12px;
+    border-left:4px solid #00ff88;
+    margin-bottom:15px;
 }
 
 button{
@@ -67,8 +67,12 @@ button{
 
 .add{background:#00aa55;color:white;}
 .calc{background:#0066ff;color:white;}
-.del{background:#cc2222;color:white;}
-
+.del{
+    background:#cc2222;
+    color:white;
+    padding:6px 12px;
+    font-size:12px;
+}
 .result{
     margin-top:20px;
     background:#111;
@@ -118,7 +122,7 @@ calculate();
 
 <div id="matches"></div>
 
-<button class="add" onclick="addMatch()">+ Tambah Match</button>
+<button class="add" onclick="addMatch()">⚽ Tambah Leg</button>
 
 
 <div class="result" id="result">
@@ -136,19 +140,22 @@ Masukkan data
 function addMatch(){
 
 const div=document.createElement("div");
+const legNumber =
+document.querySelectorAll('.match').length + 1;
 
 div.className="match";
 
 div.innerHTML=`
-<label>Odds</label>
-<input
-type="number"
-step="0.01"
-class="odd"
-placeholder="1.90"
-oninput="calculate()">
+<h3 style="
+margin-top:0;
+color:#00ff88;
+border-bottom:1px solid #333;
+padding-bottom:8px;
+">
+⚽ Leg #${legNumber}
+</h3>
 
-<label>Status</label>
+<label>Odds</label>
 <select
 class="status"
 onchange="calculate()">
