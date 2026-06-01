@@ -95,6 +95,7 @@ src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg"
 <script>
 
 let score = 0;
+let combo = 0;
 let lives = 3;
 let timeLeft = 60;
 let bestScore =
@@ -128,28 +129,37 @@ return;
 }
 
 score++;
+combo++;
 
 document.getElementById(
 'score'
 ).innerHTML =
-'🏆 Score : '+score;
+'🏆 Score : ' + score;
 
-const boom =
+if(combo >= 3){
+
+const comboText =
 document.createElement('div');
 
-boom.innerHTML = '💥';
+comboText.innerHTML =
+'🔥 COMBO x' + combo;
 
-boom.style.position = 'absolute';
-boom.style.left = ball.style.left;
-boom.style.top = ball.style.top;
-boom.style.fontSize = '60px';
+comboText.style.position='fixed';
+comboText.style.top='50%';
+comboText.style.left='50%';
+comboText.style.transform='translate(-50%,-50%)';
+comboText.style.fontSize='50px';
+comboText.style.fontWeight='bold';
+comboText.style.color='gold';
+comboText.style.zIndex='9999';
 
-document.body.appendChild(boom);
+document.body.appendChild(comboText);
 
 setTimeout(()=>{
-boom.remove();
-},300);
+comboText.remove();
+},800);
 
+}
 moveBall();
 
 };
