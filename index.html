@@ -43,10 +43,7 @@ input,select{
     border-radius:8px;
 }
 #matches{
-    display:flex;
-    overflow-x:auto;
-    gap:15px;
-    padding-bottom:10px;
+    display:block;
 }
     
 .match{
@@ -156,17 +153,29 @@ padding-bottom:8px;
 </h3>
 
 <label>Odds</label>
+<input
+type="number"
+step="0.01"
+class="odd"
+placeholder="1.90"
+oninput="calculate()">
+
+<label>Status</label>
 <select
 class="status"
 onchange="calculate()">
 <option value="win">Win</option>
 <option value="halfwin">Half Win</option>
 <option value="void">Void</option>
-<option value="halflose">Half Lose</option>    
+<option value="halflose">Half Lose</option>
 <option value="lose">Lose</option>
 </select>
 
-<button class="del" onclick="this.parentElement.remove()">Hapus</button>
+<button
+class="del"
+onclick="this.parentElement.remove(); calculate();">
+Hapus
+</button>
 `;
 
 document.getElementById("matches").appendChild(div);
