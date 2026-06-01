@@ -266,14 +266,37 @@ document.getElementById("result").innerHTML=`
 
 function copyResult(){
 
-const text =
-document.getElementById("result").innerText;
+let text = "🏆 PARLAY ELITE 🏆\n\n";
+
+const stake =
+document.getElementById("stake").value;
+
+text += `💵 Stake : ${stake}\n\n`;
+
+const odds =
+document.querySelectorAll(".odd");
+
+const status =
+document.querySelectorAll(".status");
+
+for(let i=0;i<odds.length;i++){
+
+text += `⚽ Leg #${i+1}\n`;
+
+text += `Odds : ${odds[i].value}\n`;
+
+text += `Status : ${status[i].options[status[i].selectedIndex].text}\n\n`;
+
+}
+
+text += "━━━━━━━━━━━━━━\n\n";
+
+text += document.getElementById("result").innerText;
 
 navigator.clipboard.writeText(text);
 
-alert("Hasil berhasil disalin!");
-}    
-
+alert("Slip berhasil disalin!");
+}
 </script>
 
 </body>
