@@ -112,11 +112,15 @@ calculate();
 <div id="matches"></div>
 
 <button class="add" onclick="addMatch()">+ Tambah Match</button>
-<button class="calc" onclick="calculate()">Hitung</button>
+
 
 <div class="result" id="result">
-Masukkan data lalu klik Hitung
+Masukkan data
 </div>
+
+<button onclick="copyResult()">
+📋 Copy Result
+</button>
 
 </div>
 
@@ -200,6 +204,7 @@ total*=odd;
 
 const payout=stake*total;
 const profit=payout-stake;
+const roi = stake > 0 ? ((profit / stake) * 100) : 0;    
 
 const formatNumber = (num) => {
     return num.toLocaleString('en-US', {
@@ -209,12 +214,27 @@ const formatNumber = (num) => {
 };    
 
 document.getElementById("result").innerHTML=`
-<h2>Hasil</h2>
-<p>Total Odds : <b>${total.toFixed(2)}</b></p>
-<p>Payout : <b>${formatNumber(payout)}</b></p>
-<p>Profit : <b>${formatNumber(profit)}</b></p>
+<h2>📊 Hasil Parlay</h2>
+
+<p>🎯 Total Odds : <b>${total.toFixed(2)}</b></p>
+
+<p>💰 Payout : <b>${formatNumber(payout)}</b></p>
+
+<p>📈 Profit : <b style="color:#00ff88">${formatNumber(profit)}</b></p>
+
+<p>🚀 ROI : <b style="color:#ffd700">${roi.toFixed(2)}%</b></p>
 `;
 }
+
+function copyResult(){
+
+const text =
+document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Hasil berhasil disalin!");
+}    
 
 </script>
 
