@@ -373,6 +373,36 @@ break;
 total*=odd;
 }
 
+if(currentMode === 'single'){
+
+let firstOdd =
+parseFloat(
+document.querySelector('.odd')?.value
+) || 1;
+
+const firstStatus =
+document.querySelector('.status')?.value;
+
+switch(firstStatus){
+
+case "halfwin":
+firstOdd = 1 + ((firstOdd - 1)/2);
+break;
+
+case "void":
+firstOdd = 1;
+break;
+
+case "halflose":
+firstOdd = 0.5;
+break;
+
+}
+
+total = firstOdd;
+
+}
+    
 const payout=stake*total;
 const profit=payout-stake;
 const roi = stake > 0 ? ((profit / stake) * 100) : 0;    
@@ -384,8 +414,13 @@ const formatNumber = (num) => {
     });
 };    
 
+const resultTitle =
+currentMode === 'single'
+? '⚽ Hasil Single Bet'
+: '🏆 Hasil Parlay';
+
 document.getElementById("result").innerHTML=`
-<h2>📊 Hasil Parlay</h2>
+<h2>${resultTitle}</h2>
 
 <p>🎯 Total Odds : <b>${total.toFixed(2)}</b></p>
 
