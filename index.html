@@ -27,7 +27,7 @@ body{
 }
 
 .container{
-    max-width:900px;
+    max-width:800px;
     margin:auto;
     background:rgba(0,0,0,.75);
     padding:25px;
@@ -54,11 +54,11 @@ input,select{
 }
     
 .match{
-    background:#1c1c1c;
-    padding:15px;
-    border-radius:12px;
-    border-left:4px solid #ffd700;
-    margin-bottom:15px;
+background:#1c1c1c;
+padding:10px;
+border-radius:12px;
+border-left:4px solid #ffd700;
+margin-bottom:10px;
 }
 
 button{
@@ -226,10 +226,8 @@ calculate();
 
 <div style="
 display:flex;
-justify-content:center;
-gap:15px;
-margin-top:25px;
-flex-wrap:wrap;
+gap:10px;
+align-items:end;
 ">
 
 <a
@@ -337,6 +335,7 @@ div.innerHTML=`
 <div style="
 display:flex;
 gap:10px;
+align-items:end;
 ">
 
 <div style="
@@ -377,11 +376,13 @@ onchange="calculate()">
 
 <button
 class="del"
-onclick="this.parentElement.remove(); calculate();"
+onclick="this.parentElement.parentElement.remove(); calculate();"
 style="
 display:${currentMode === 'single' ? 'none' : 'inline-block'};
+height:42px;
+margin-top:24px;
 ">
-Hapus
+❌
 </button>
 
 `;
