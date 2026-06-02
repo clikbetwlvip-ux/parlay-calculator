@@ -331,13 +331,19 @@ document.getElementById("stake").value.replace(/,/g,'')
 )||0;
 
 if(stake <= 0){
+
+const emptyTitle =
+currentMode === 'single'
+? '⚽ Hasil Single Bet'
+: '🏆 Hasil Parlay';
+
 document.getElementById("result").innerHTML = `
-<h2>📊 Hasil Parlay</h2>
+<h2>${emptyTitle}</h2>
 <p>Masukkan Stake dan Odds terlebih dahulu</p>
 `;
+
 return;
 }
-
 const odds=document.querySelectorAll(".odd");
 const status=document.querySelectorAll(".status");
 
