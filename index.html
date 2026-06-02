@@ -197,14 +197,6 @@ calculate();
 
 <div id="matches"></div>
 
-<button
-id="addLegBtn"
-class="add"
-onclick="addMatch()">
-⚽ Tambah Leg
-</button>
-
-
 <div class="result" id="result">
 ...
 </div>
@@ -289,13 +281,36 @@ document.querySelectorAll('.match').length + 1;
 div.className="match";
 
 div.innerHTML=`
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
 <h3 style="
-margin:0 0 8px 0;
+margin:0;
 color:#ffd700;
 font-size:16px;
 ">
 ⚽ Leg #${legNumber}
 </h3>
+
+<select
+style="
+width:120px;
+padding:5px;
+">
+
+<option>1 Parlay</option>
+<option>2 Parlay</option>
+<option>3 Parlay</option>
+<option>4 Parlay</option>
+<option>5 Parlay</option>
+
+</select>
+
+</div>
+`
 
 <label>Odds</label>
 <input
