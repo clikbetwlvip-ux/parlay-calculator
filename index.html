@@ -184,6 +184,8 @@ onclick="setMode('parlay')">
 
 </div>
 
+<div id="legSection">
+
 <label>Jumlah Pertandingan</label>
 
 <select
@@ -197,6 +199,8 @@ onchange="updateLegs()">
 <option value="10">10 Match</option>
 
 </select>
+
+</div>
     
 <label>Stake</label>
 <input
@@ -253,24 +257,30 @@ document.getElementById(
 ).classList.remove('active');
 
 if(mode === 'single'){
-   
+
 document.getElementById(
 'singleBtn'
 ).classList.add('active');
 
-while(
-document.querySelectorAll('.match').length > 1
-){
-document
-.querySelectorAll('.match')[1]
-.remove();
-}
+document.getElementById(
+'legSection'
+).style.display = 'none';
+
+document.getElementById(
+'legCount'
+).value = '1';
+
+updateLegs();
 
 }else{
-    
+
 document.getElementById(
 'parlayBtn'
 ).classList.add('active');
+
+document.getElementById(
+'legSection'
+).style.display = 'block';
 
 }
 
@@ -331,7 +341,10 @@ onchange="calculate()">
 
 <button
 class="del"
-onclick="this.parentElement.remove(); calculate();">
+onclick="this.parentElement.remove(); calculate();"
+style="
+display:${currentMode === 'single' ? 'none' : 'inline-block'};
+">
 Hapus
 </button>
 
