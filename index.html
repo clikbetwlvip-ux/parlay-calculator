@@ -183,6 +183,20 @@ onclick="setMode('parlay')">
 </button>
 
 </div>
+
+<label>Jumlah Pertandingan</label>
+
+<select
+id="legCount"
+onchange="updateLegs()">
+
+<option value="1">1 Match</option>
+<option value="2">2 Match</option>
+<option value="3">3 Match</option>
+<option value="5">5 Match</option>
+<option value="10">10 Match</option>
+
+</select>
     
 <label>Stake</label>
 <input
@@ -274,31 +288,6 @@ div.className="match";
 
 div.innerHTML=`
 
-<div style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-">
-
-<h3 style="
-margin:0;
-color:#ffd700;
-font-size:16px;
-">
-⚽ Leg #${legNumber}
-</h3>
-
-<select style="
-width:120px;
-padding:5px;
-">
-<option>1 Parlay</option>
-<option>2 Parlay</option>
-<option>3 Parlay</option>
-</select>
-
-</div>
-
 <label>Odds</label>
 
 <input
@@ -332,9 +321,37 @@ Hapus
 document.getElementById("matches").appendChild(div);
 }
 
-addMatch();
+updateLegs();
 calculate();
 
+function updateLegs(){
+
+const count =
+parseInt(
+document.getElementById(
+'legCount'
+).value
+);
+
+const matches =
+document.getElementById(
+'matches'
+);
+
+matches.innerHTML='';
+
+for(
+let i=0;
+i<count;
+i++
+){
+addMatch();
+}
+
+calculate();
+
+}
+    
 function calculate(){
 
 const stake=parseFloat(
