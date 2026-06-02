@@ -239,11 +239,7 @@ document.getElementById(
 ).classList.remove('active');
 
 if(mode === 'single'){
-
- document.getElementById(
-'addLegBtn'
-).style.display = 'none';   
-    
+   
 document.getElementById(
 'singleBtn'
 ).classList.add('active');
@@ -257,10 +253,6 @@ document
 }
 
 }else{
-
-document.getElementById(
-'addLegBtn'
-).style.display = 'inline-block';
     
 document.getElementById(
 'parlayBtn'
@@ -281,6 +273,7 @@ document.querySelectorAll('.match').length + 1;
 div.className="match";
 
 div.innerHTML=`
+
 <div style="
 display:flex;
 justify-content:space-between;
@@ -295,24 +288,19 @@ font-size:16px;
 ⚽ Leg #${legNumber}
 </h3>
 
-<select
-style="
+<select style="
 width:120px;
 padding:5px;
 ">
-
 <option>1 Parlay</option>
 <option>2 Parlay</option>
 <option>3 Parlay</option>
-<option>4 Parlay</option>
-<option>5 Parlay</option>
-
 </select>
 
 </div>
-`
 
 <label>Odds</label>
+
 <input
 type="number"
 step="0.01"
@@ -321,13 +309,16 @@ placeholder="1.90"
 oninput="calculate()">
 
 <label>Status</label>
+
 <select
 class="status"
 onchange="calculate()">
+
 <option value="win">✅ Menang</option>
 <option value="halfwin">🟢 Menang Setengah</option>
 <option value="void">⚪ Push / Refund</option>
 <option value="halflose">🟠 Kalah Setengah</option>
+
 </select>
 
 <button
@@ -335,6 +326,7 @@ class="del"
 onclick="this.parentElement.remove(); calculate();">
 Hapus
 </button>
+
 `;
 
 document.getElementById("matches").appendChild(div);
