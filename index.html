@@ -288,6 +288,15 @@ div.className="match";
 
 div.innerHTML=`
 
+<div style="
+display:flex;
+gap:10px;
+">
+
+<div style="
+flex:1;
+">
+
 <label>Odds</label>
 
 <input
@@ -296,6 +305,12 @@ step="0.01"
 class="odd"
 placeholder="1.90"
 oninput="calculate()">
+
+</div>
+
+<div style="
+flex:1;
+">
 
 <label>Status</label>
 
@@ -309,6 +324,10 @@ onchange="calculate()">
 <option value="halflose">🟠 Kalah Setengah</option>
 
 </select>
+
+</div>
+
+</div>
 
 <button
 class="del"
