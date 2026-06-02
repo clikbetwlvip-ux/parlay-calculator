@@ -207,7 +207,12 @@ calculate();
 
 <div id="matches"></div>
 
-<button class="add" onclick="addMatch()">⚽ Tambah Leg</button>
+<button
+id="addLegBtn"
+class="add"
+onclick="addMatch()">
+⚽ Tambah Leg
+</button>
 
 
 <div class="result" id="result">
@@ -238,6 +243,10 @@ document.getElementById(
 
 if(mode === 'single'){
 
+ document.getElementById(
+'addLegBtn'
+).style.display = 'none';   
+    
 document.getElementById(
 'singleBtn'
 ).classList.add('active');
@@ -252,6 +261,10 @@ document
 
 }else{
 
+document.getElementById(
+'addLegBtn'
+).style.display = 'inline-block';
+    
 document.getElementById(
 'parlayBtn'
 ).classList.add('active');
@@ -296,7 +309,6 @@ onchange="calculate()">
 <option value="halfwin">🟢 Menang Setengah</option>
 <option value="void">⚪ Push / Refund</option>
 <option value="halflose">🟠 Kalah Setengah</option>
-<option value="lose">🔴 Kalah</option>
 </select>
 
 <button
