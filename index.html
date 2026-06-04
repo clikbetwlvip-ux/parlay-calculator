@@ -222,11 +222,22 @@ color:white;
 transition:.3s;
 }
     
-    .bet-mode button.active{
-    background:gold;
-    color:black;
-    box-shadow:0 0 15px gold;
-    }
+.bet-mode button.active{
+background:gold;
+color:black;
+box-shadow:0 0 15px gold;
+}
+
+.match:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px rgba(255,215,0,.15);
+transition:.3s;
+}
+
+.result:hover{
+box-shadow:0 0 30px rgba(255,215,0,.15);
+transition:.3s;
+}
     
         
     </style>
@@ -361,7 +372,6 @@ box-shadow:none;
     text-decoration:none;
     font-weight:bold;
     font-size:16px;
-    box-shadow:0 0 15px #0088cc;
     transition:.3s;
     ">
     ✈️ Telegram
@@ -380,7 +390,6 @@ box-shadow:none;
     text-decoration:none;
     font-weight:bold;
     font-size:16px;
-    box-shadow:0 0 15px #25D366;
     transition:.3s;
     ">
     📱 WhatsApp
@@ -388,9 +397,19 @@ box-shadow:none;
     
     </div>
     
-    <button onclick="copyResult()">
-    📋 Copy Result
-    </button>
+  <button
+onclick="copyResult()"
+style="
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,215,0,.15);
+color:white;
+padding:12px 25px;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+">
+📋 Copy Result
+</button>
     
     </div>
     
@@ -659,69 +678,85 @@ cursor:pointer;
     ? '⚽ Hasil Single Bet'
     : '🏆 Hasil Parlay';
     
-    document.getElementById("result").innerHTML=`
-    
-    <h2 style="text-align:center;">
-    ${resultTitle}
-    </h2>
-    
-    <div style="
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-    margin-top:20px;
-    ">
-    
-    <div style="
-    background:rgba(255,255,255,.04);
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    border:1px solid rgba(255,215,0,.15);
-    ">
-    🎯<br>
-    <b>Total Odds</b><br>
-    ${total.toFixed(2)}
-    </div>
-    
-    <div style="
-    background:rgba(255,255,255,.04);
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    border:1px solid rgba(255,215,0,.15);
-    ">
-    💰<br>
-    <b>Payout</b><br>
-    ${formatNumber(payout)}
-    </div>
-    
-    <div style="
-    background:rgba(255,255,255,.04);
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    border:1px solid rgba(255,215,0,.15);
-    ">
-    📈<br>
-    <b>Profit</b><br>
-    ${formatNumber(profit)}
-    </div>
-    
-    <div style="
-    background:rgba(255,255,255,.04);
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    border:1px solid rgba(255,215,0,.15);
-    ">
-    🚀<br>
-    <b>ROI</b><br>
-    ${roi.toFixed(2)}%
-    </div>
-    
-    </div>
-    `;
+document.getElementById("result").innerHTML=`
+
+<h2 style="text-align:center;">
+${resultTitle}
+</h2>
+
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+">
+
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+🎯<br>
+<b>Total Odds</b><br>
+${total.toFixed(2)}
+</div>
+
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+💰<br>
+<b>Payout</b><br>
+
+<div style="
+font-size:24px;
+font-weight:bold;
+color:#ffd700;
+margin-top:5px;
+">
+${formatNumber(payout)}
+</div>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+📈<br>
+<b>Profit</b><br>
+
+<span style="
+color:${profit >= 0 ? '#00ff88' : '#ff4d4d'};
+font-weight:bold;
+">
+${formatNumber(profit)}
+</span>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+🚀<br>
+<b>ROI</b><br>
+${roi.toFixed(2)}%
+</div>
+
+</div>
+`;
     }
     
     function copyResult(){
