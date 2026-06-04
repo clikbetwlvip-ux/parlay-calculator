@@ -29,9 +29,21 @@ body{
 .container{
     max-width:950px;
     margin:auto;
-    background:rgba(0,0,0,.75);
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(8,15,28,.92),
+    rgba(4,8,15,.92)
+    );
+
+    border:1px solid rgba(255,215,0,.15);
+
+    box-shadow:
+    0 0 50px rgba(0,0,0,.6);
+
     padding:25px;
-    border-radius:15px;
+    border-radius:20px;
 }
 
 h1{
@@ -44,11 +56,31 @@ h1{
 
 input,select{
     width:100%;
-    padding:12px;
+    padding:14px;
     margin-top:5px;
-    border:none;
-    border-radius:8px;
+
+    background:rgba(255,255,255,.06);
+
+    color:white;
+
+    border:1px solid rgba(255,215,0,.15);
+
+    border-radius:12px;
+
     box-sizing:border-box;
+}
+
+/* TARUH DI SINI */
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:#ffd700;
+
+    box-shadow:
+    0 0 15px rgba(255,215,0,.25);
+
 }
 #matches{
     display:block;
@@ -118,10 +150,24 @@ button{
 }
     
 .result{
+
     margin-top:20px;
-    background:#111;
-    padding:20px;
-    border-radius:10px;
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(20,20,20,.95),
+    rgba(5,5,5,.95)
+    );
+
+    border:1px solid rgba(255,215,0,.15);
+
+    box-shadow:
+    0 0 20px rgba(255,215,0,.08);
+
+    padding:25px;
+
+    border-radius:20px;
 }
 
 .bet-mode{
@@ -162,7 +208,7 @@ box-shadow:0 0 15px gold;
 src="https://clickbet88sedekahrejeki05.xyz/storage/webpersonalize/d54f5304-03b3-49f7-b283-e6fe0c595ca7.gif"
 class="logo"
 style="
-max-width:250px;
+max-width:350px;
 height:auto;
 ">
 
@@ -557,15 +603,67 @@ currentMode === 'single'
 : '🏆 Hasil Parlay';
 
 document.getElementById("result").innerHTML=`
-<h2>${resultTitle}</h2>
 
-<p>🎯 Total Odds : <b>${total.toFixed(2)}</b></p>
+<h2 style="text-align:center;">
+${resultTitle}
+</h2>
 
-<p>💰 Payout : <b>${formatNumber(payout)}</b></p>
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+">
 
-<p>📈 Profit : <b style="color:#00ff88">${formatNumber(profit)}</b></p>
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+🎯<br>
+<b>Total Odds</b><br>
+${total.toFixed(2)}
+</div>
 
-<p>🚀 ROI : <b style="color:#ffd700">${roi.toFixed(2)}%</b></p>
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+💰<br>
+<b>Payout</b><br>
+${formatNumber(payout)}
+</div>
+
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+📈<br>
+<b>Profit</b><br>
+${formatNumber(profit)}
+</div>
+
+<div style="
+background:rgba(255,255,255,.04);
+padding:15px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(255,215,0,.15);
+">
+🚀<br>
+<b>ROI</b><br>
+${roi.toFixed(2)}%
+</div>
+
+</div>
 `;
 }
 
