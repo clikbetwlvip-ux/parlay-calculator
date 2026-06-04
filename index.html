@@ -141,13 +141,19 @@ transition:.3s;
     
     .add{background:#00aa55;color:white;}
     .calc{background:#0066ff;color:white;}
-    .del{
-        background:#cc2222;
-        color:white;
-        padding:8px 15px;
-        font-size:14px;
-        border-radius:8px;
-    }
+.del{
+background:#cc2222;
+color:white;
+padding:8px 15px;
+font-size:14px;
+border-radius:8px;
+
+transition:.3s;
+}
+
+.del:hover{
+transform:scale(1.08);
+}
     
 .logo{
 animation:
@@ -293,7 +299,11 @@ flex-direction:column;
 .bet-mode button{
 width:100%;
 }
-
+    
+.match{
+padding:20px;
+}
+    
 .top-form{
 grid-template-columns:1fr;
 }
@@ -577,7 +587,7 @@ color:#666;
 
 <div style="
 display:grid;
-grid-template-columns:1.3fr 1.3fr 70px;
+grid-template-columns:1fr 1.6fr 70px;
 gap:25px;
 align-items:end;
 ">
