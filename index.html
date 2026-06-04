@@ -49,7 +49,7 @@
  h1{
     text-align:center;
     color:#ffd700;
-    font-size:52px;
+    font-size:36px;
     letter-spacing:3px;
     text-shadow:0 0 20px #ffd700;
 }    
@@ -217,28 +217,25 @@ border-radius:20px;
     gap:20px;
     margin-bottom:20px;
     }
-    
+        
+.top-form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+align-items:end;
+margin-bottom:20px;
+}
+            
 .bet-mode button{
 
-padding:15px 30px;
+padding:12px 15px;
 
-font-size:17px;
+font-size:15px;
 
-font-weight:bold;
+min-width:auto;
 
-min-width:180px;
+flex:1;
 
-border:1px solid rgba(255,215,0,.15);
-
-border-radius:12px;
-
-cursor:pointer;
-
-background:#111;
-
-color:white;
-
-transition:.3s;
 }
     
 .bet-mode button.active{
@@ -280,7 +277,33 @@ transition:.3s;
 
 }
     
-        
+@media(max-width:768px){
+
+.container{
+padding:15px;
+}
+
+h1{
+font-size:32px;
+}
+
+.bet-mode{
+flex-direction:column;
+}
+
+.bet-mode button{
+width:100%;
+}
+
+.top-form{
+grid-template-columns:1fr;
+}
+
+.result div{
+font-size:14px;
+}
+
+}
     </style>
     </head>
     <body>
@@ -293,7 +316,7 @@ transition:.3s;
     src="https://clickbet88sedekahrejeki05.xyz/storage/webpersonalize/d54f5304-03b3-49f7-b283-e6fe0c595ca7.gif"
     class="logo"
     style="
-   max-width:420px;
+   max-width:100%;
     height:auto;
     ">
     
@@ -357,34 +380,28 @@ Live Odds • Fast Calculation • Elite Tool
 </div>
         
     
-    <div class="bet-mode">
-    
-    <button
-    id="singleBtn"
-    onclick="setMode('single')">
-    ⚽ Single Bet
-    </button>
-    
-    <button
-    id="parlayBtn"
-    class="active"
-    onclick="setMode('parlay')">
-    🏆 Parlay
-    </button>
-    
-    </div>
-    
-    <div style="
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    align-items:end;
-    margin-bottom:20px;
-    ">
-    
-    <div id="legSection">
-    
-    <label>Jumlah Pertandingan</label>
+<div class="bet-mode">
+
+<button
+id="singleBtn"
+onclick="setMode('single')">
+⚽ Single Bet
+</button>
+
+<button
+id="parlayBtn"
+class="active"
+onclick="setMode('parlay')">
+🏆 Parlay
+</button>
+
+</div>
+
+<div class="top-form">
+
+<div id="legSection">
+
+<label>Jumlah Pertandingan</label>
     
     <select
     id="legCount"
@@ -763,8 +780,9 @@ ${resultTitle}
 <div style="
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:15px;
-margin-top:20px;
+gap:20px;
+align-items:end;
+margin-bottom:20px;
 ">
 
 <div style="
